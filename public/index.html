@@ -1,19 +1,25 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مدیریت کاربران و کالاها</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; }
+    form { display: inline-block; }
+    .field { margin-bottom: 10px; }
+    label { margin-right: 5px; }
+    input { padding: 5px; }
+    button { padding: 5px 15px; background-color: #4CAF50; color: white; border: none; }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h2>به سیستم مدیریت خوش آمدید!</h2>
-    <p>این پروژه شامل یه سیستم ساده برای ثبت‌ نام کاربر و مدیریت کالاهاست.</p>
-    <div class="button-group">
-      <a href="form.html" class="primary">ثبت‌ نام و ورود کالا</a>
-      <a href="invoice.html" class="primary">مشاهده فاکتور</a>
+  <form action="/submit" method="POST">
+    <div class="field">
+      <label for="name">نام:</label>
+      <input id="name" name="name" />
     </div>
-  </div>
+    <div class="field">
+      <label for="age">سن:</label>
+      <input id="age" name="age" />
+    </div>
+    <button type="submit">Send</button>
+  </form>
 </body>
 </html>
