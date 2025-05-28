@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فاکتور کالاها</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>فاکتور کالاها</h2>
+    <div class="product-list" id="invoiceList"></div>
+    <div class="button-group">
+      <a href="form.html" class="primary">بازگشت به فرم</a>
+    </div>
+  </div>
+
+  <script>
+    // محدثه‌ام، این کد برای گرفتن لیست کالاها از سرور است
+    const invoiceList = document.getElementById('invoiceList');
+
+    fetch('http://localhost:3000/products')
+      .then(response => response.json())
+      .then(products => {
+        if (products.length === 0) {
+          invoiceList.innerHTML = '<div class="empty-message">هیچ کالایی ثبت نشده</div>';
+        } else {
+          products.forEach((product, index) => {
+            const item = document.createElement('div');
+            item.className = 'product-item';
+            item.innerHTML = `
+              <div>
+                <strong>کالا ${index + 1}: ${product.name}</strong><br>
+                قیمت: ${product.price} تومان<br>
+                <small>${product.desc}</small>
+              </div>
+            `;
+            invoiceList.appendChild(item);
+          });
+        }
+      })
+      .catch(error => {
+        invoiceList.innerHTML = '<div class="empty-message">خطا در گرفتن داده‌ها: ' + error.message + '</div>';
+      });
+  </script>
+</body>
+</html>
