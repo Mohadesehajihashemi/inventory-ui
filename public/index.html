@@ -1,25 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="fa">
 <head>
-  <style>
-    body { font-family: Arial; text-align: center; margin-top: 50px; }
-    form { display: inline-block; }
-    .field { margin-bottom: 10px; }
-    label { margin-right: 5px; }
-    input { padding: 5px; }
-    button { padding: 5px 15px; background-color: #4CAF50; color: white; border: none; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory UI</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <form action="/submit" method="POST">
-    <div class="field">
-      <label for="name">نام:</label>
-      <input id="name" name="name" />
-    </div>
-    <div class="field">
-      <label for="age">سن:</label>
-      <input id="age" name="age" />
-    </div>
-    <button type="submit">Send</button>
-  </form>
+    <h1>مدیریت موجودی</h1>
+    <form action="/api/submit" method="POST">
+        <div class="field">
+            <label for="name">نام:</label>
+            <input id="name" name="name" required>
+        </div>
+        <div class="field">
+            <label for="age">سن:</label>
+            <input id="age" name="age" type="number" required>
+        </div>
+        <button type="submit">ارسال</button>
+    </form>
 </body>
 </html>
