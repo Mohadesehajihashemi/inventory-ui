@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست افراد</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>لیست افراد</h1>
+    <div class="container">
+        <% if (data.length === 0) { %>
+            <p class="empty-message">هیچ داده‌ای وجود ندارد.</p>
+        <% } else { %>
+            <% data.forEach((item, index) => { %>
+                <div class="product-item">
+                    <div>
+                        <p><strong>نام:</strong> <%= item.firstName %></p>
+                        <p><strong>نام خانوادگی:</strong> <%= item.lastName %></p>
+                        <p><strong>کد ملی:</strong> <%= item.nationalCode %></p>
+                        <p><strong>شماره تماس:</strong> <%= item.phone %></p>
+                        <% if (item.email) { %>
+                            <p><strong>ایمیل:</strong> <%= item.email %></p>
+                        <% } %>
+                        <% if (item.address) { %>
+                            <p><strong>آدرس:</strong> <%= item.address %></p>
+                        <% } %>
+                        <p><strong>تحصیلات:</strong> 
+                            <% if (item.education === 'diploma') { %> دیپلم
+                            <% } else if (item.education === 'associate') { %> کاردانی
+                            <% } else if (item.education === 'bachelor') { %> کارشناسی
+                            <% } else if (item.education === 'master') { %> کارشناسی ارشد
+                            <% } else if (item.education === 'phd') { %> دکتری
+                            <% } %>
+                        </p>
+                        <p><strong>وضعیت تأهل:</strong> <%= item.maritalStatus === 'single' ? 'مجرد' : 'متأهل' %></p>
+                        <p><strong>جنسیت:</strong> <%= item.gender === 'male' ? 'مرد' : 'زن' %></p>
+                        <% if (item.description) { %>
+                            <p><strong>توضیحات:</strong> <%= item.description %></p>
+                        <% } %>
+                    </div>
+                    <form action="/delete/<%= index %>" method="POST" style="display:inline;">
+                        <button type="submit" class="danger">حذف</button>
+                    </form>
+                </div>
+            <% }); %>
+        <% } %>
+        <div class="button-group">
+            <a href="/" class="primary">بازگشت به فرم</a>
+            <a href="/products" class="primary">مدیریت کالاها</a>
+        </div>
+    </div>
+</body>
+</html>

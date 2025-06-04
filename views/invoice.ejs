@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فاکتور کالاها</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>فاکتور کالاها</h1>
+    <div class="container">
+        <% if (products.length === 0) { %>
+            <p class="empty-message">هیچ کالایی ثبت نشده است.</p>
+        <% } else { %>
+            <% products.forEach((product, index) => { %>
+                <div class="product-item">
+                    <div>
+                        <strong>کالا <%= index + 1 %>: <%= product.name %></strong><br>
+                        قیمت: <%= product.price.toLocaleString('fa-IR') %> تومان<br>
+                        <small><%= product.description || 'بدون توضیح' %></small>
+                    </div>
+                </div>
+            <% }); %>
+        <% } %>
+        <div class="button-group">
+            <a href="/products" class="primary">بازگشت به مدیریت کالاها</a>
+            <a href="/" class="primary">فرم افراد</a>
+        </div>
+    </div>
+</body>
+</html>

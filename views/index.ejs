@@ -3,21 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory UI</title>
+    <title>فرم ثبت اطلاعات</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <h1>مدیریت موجودی</h1>
+    <h1>مشخصات فرد</h1>
+    <% if (typeof error !== 'undefined') { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
     <form action="/api/submit" method="POST">
         <div class="field">
-            <label for="name">نام:</label>
-            <input id="name" name="name" required>
+            <label for="firstName">نام:</label>
+            <input id="firstName" name="firstName" value="<%= typeof firstName !== 'undefined' ? firstName : '' %>" required>
         </div>
         <div class="field">
-            <label for="age">سن:</label>
-            <input id="age" name="age" type="number" required>
+            <label for="lastName">نام خانوادگی:</label>
+            <input id="lastName" name="lastName" value="<%= typeof lastName !== 'undefined' ? lastName : '' %>" required>
+        </div>
+        <div class="field">
+            <label for="nationalCode">کد ملی:</label>
+            <input id="nationalCode" name="nationalCode" value="<%= typeof nationalCode !== 'undefined' ? nationalCode : '' %>" required>
+        </div>
+        <div class="field">
+            <label for="phone">شماره تماس:</label>
+            <input id="phone" name="phone" type="tel" value="<%= typeof phone !== 'undefined' ? phone : '' %>" required>
+        </div>
+        <div class="field">
+            <label for="email">ایمیل:</label>
+            <input id="email" name="email" type="email" value="<%= typeof email !== 'undefined' ? email : '' %>">
+        </div>
+        <div class="field">
+            <label for="address">آدرس:</label>
+            <textarea id="address" name="address"><%= typeof address !== 'undefined' ? address : '' %></textarea>
+        </div>
+        <div class="field">
+            <label for="education">تحصیلات:</label>
+            <select id="education" name="education" required>
+                <option value="">انتخاب کنید</option>
+                <option value="diploma" <%= typeof education !== 'undefined' && education === 'diploma' ? 'selected' : '' %>>دیپلم</option>
+                <option value="associate" <%= typeof education !== 'undefined' && education === 'associate' ? 'selected' : '' %>>کاردانی</option>
+                <option value="bachelor" <%= typeof education !== 'undefined' && education === 'bachelor' ? 'selected' : '' %>>کارشناسی</option>
+                <option value="master" <%= typeof education !== 'undefined' && education === 'master' ? 'selected' : '' %>>کارشناسی ارشد</option>
+                <option value="phd" <%= typeof education !== 'undefined' && education === 'phd' ? 'selected' : '' %>>دکتری</option>
+            </select>
+        </div>
+        <div class="field">
+            <label>وضعیت تأهل:</label>
+            <input type="radio" id="single" name="maritalStatus" value="single" <%= typeof maritalStatus !== 'undefined' && maritalStatus === 'single' ? 'checked' : '' %> required>
+            <label for="single">مجرد</label>
+            <input type="radio" id="married" name="maritalStatus" value="married" <%= typeof maritalStatus !== 'undefined' && maritalStatus === 'married' ? 'checked' : '' %>>
+            <label for="married">متأهل</label>
+        </div>
+        <div class="field">
+            <label>جنسیت:</label>
+            <input type="radio" id="male" name="gender" value="male" <%= typeof gender !== 'undefined' && gender === 'male' ? 'checked' : '' %> required>
+            <label for="male">مرد</label>
+            <input type="radio" id="female" name="gender" value="female" <%= typeof gender !== 'undefined' && gender === 'female' ? 'checked' : '' %>>
+            <label for="female">زن</label>
+        </div>
+        <div class="field">
+            <label for="description">توضیحات:</label>
+            <textarea id="description" name="description"><%= typeof description !== 'undefined' ? description : '' %></textarea>
         </div>
         <button type="submit">ارسال</button>
     </form>
+    <div class="button-group">
+        <a href="/products" class="primary">مدیریت کالاها</a>
+    </div>
 </body>
 </html>
