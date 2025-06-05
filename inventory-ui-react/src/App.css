@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+  direction: rtl;
+  font-family: 'Vazir', Arial, sans-serif;
+  background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App-header {
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: #2d3748;
+  margin-bottom: 20px;
+}
+
+.App-header h1 {
+  margin-bottom: 10px;
+}
+
+.App-header p {
+  margin-bottom: 20px;
+  color: #4a5568;
+}
